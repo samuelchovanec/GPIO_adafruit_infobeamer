@@ -1,5 +1,5 @@
 {
-    "name": "PIN 26 ON",
+    "name": "PIN 26 OFF",
     "permissions": {
         "gpio": "Access GPIO"
       },
