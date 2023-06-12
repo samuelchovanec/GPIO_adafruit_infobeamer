@@ -6,4 +6,7 @@ device.gpio.monitor(config.pin)
 for pin, state in device.gpio.poll_forever():
     node.send('/state:%d' % state)
     print("pin touched")
-    time.sleep(0.5)
+    time.sleep(1)
+    device.gpio.setup_pin(26, direction="out")
+    time.sleep(20)
+    device.gpio.set_pin_value(26, high)
