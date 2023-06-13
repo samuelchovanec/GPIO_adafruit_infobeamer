@@ -2,37 +2,30 @@
 from hosted import device, node, config, time
 config.restart_on_update()
 
+
 device.gpio.monitor(config.pin_26)
-for pin_26, state in device.gpio.poll_forever():
+device.gpio.monitor(config.pin_19)
+device.gpio.monitor(config.pin_13)
+device.gpio.monitor(config.pin_6)
+
+for pin_26, pin_19, pin_13, pin_6 state in device.gpio.poll_forever():
     node.send('/state:%d' % state)
-    if state == 1:
+    if state[pin_26] == 1:
         print("pin 26 touched")
         device.gpio.setup_pin(21, direction="out")
         time.sleep(1)
         device.gpio.set_pin_value(21,  high=True)
-
-device.gpio.monitor(config.pin_19)
-for pin_19, state in device.gpio.poll_forever():
-    node.send('/state:%d' % state)
-    if state == 1:
+    if state[pin_19] == 1:
         print("pin 19 touched")
         device.gpio.setup_pin(20, direction="out")
         time.sleep(1)
         device.gpio.set_pin_value(20,  high=True)
-
-device.gpio.monitor(config.pin_13)
-for pin_13, state in device.gpio.poll_forever():
-    node.send('/state:%d' % state)
-    if state == 1:
+    if state[pin_13] == 1:
         print("pin 13 touched")
         device.gpio.setup_pin(16, direction="out")
         time.sleep(1)
         device.gpio.set_pin_value(16,  high=True)
-
-device.gpio.monitor(config.pin_6)
-for pin_6, state in device.gpio.poll_forever():
-    node.send('/state:%d' % state)
-    if state == 1:
+    if state[pin_6] == 1:
         print("pin 6 touched")
         device.gpio.setup_pin(12, direction="out")
         time.sleep(1)
