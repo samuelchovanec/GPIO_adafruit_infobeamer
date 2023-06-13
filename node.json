@@ -6,7 +6,7 @@
     "options": [{
         "title": "PIN",
         "ui_width": 4,
-        "name": "pin",
+        "name": "pin_21",
         "type": "integer",
         "default": 18
     }]
