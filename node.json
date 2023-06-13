@@ -4,25 +4,25 @@
         "gpio": "Access GPIO"
       },
     "options": [{
-        "title": "MONITOR PIN 1",
+        "title": "MONITOR PIN 26",
         "ui_width": 4,
         "name": "pin_26",
         "type": "integer",
         "default": 26
     },{
-        "title": "MONITOR PIN 2",
+        "title": "MONITOR PIN 19",
         "ui_width": 4,
         "name": "pin_19",
         "type": "integer",
         "default": 19
     },{
-        "title": "MONITOR PIN 3",
+        "title": "MONITOR PIN 13",
         "ui_width": 4,
         "name": "pin_13",
         "type": "integer",
         "default": 13
     },{
-        "title": "MONITOR PIN 4",
+        "title": "MONITOR PIN 6",
         "ui_width": 4,
         "name": "pin_6",
         "type": "integer",
