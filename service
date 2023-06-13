@@ -13,8 +13,8 @@ device.gpio.monitor(config.pin_6)
 while True:
     now_gpio = device.gpio.poll_forever();
     print(now_gpio)
-    if now_gpio[pin_26] == 1:
-        print("success")
+    #if now_gpio[pin_26] == 1:
+        #print("success")
         
 
     
