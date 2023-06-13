@@ -9,12 +9,10 @@ device.gpio.monitor(config.pin_13)
 device.gpio.monitor(config.pin_6)
 
 
+for pin, state in device.gpio.poll_forever():
+    print(state)
+    print(pin)
 
-while True:
-    now_gpio = device.gpio.poll_forever();
-    print(now_gpio)
-    #if now_gpio[pin_26] == 1:
-        #print("success")
         
 
     
