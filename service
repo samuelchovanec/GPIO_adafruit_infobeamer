@@ -8,7 +8,7 @@ device.gpio.monitor(config.pin_19)
 device.gpio.monitor(config.pin_13)
 device.gpio.monitor(config.pin_6)
 
-for pin_26, state, pin_19, state, pin_13, state, pin_6, state in device.gpio.poll_forever():
+for pin_26, state in device.gpio.poll_forever():
     node.send('/state:%d' % state)
     if state == 1:
         print("pin 26 touched")
