@@ -12,19 +12,19 @@
     },{
         "title": "MONITOR PIN 2",
         "ui_width": 4,
-        "name": "pin_26",
+        "name": "pin_19",
         "type": "integer",
         "default": 19
     },{
         "title": "MONITOR PIN 3",
         "ui_width": 4,
-        "name": "pin_26",
+        "name": "pin_4",
         "type": "integer",
         "default": 13
     },{
         "title": "MONITOR PIN 4",
         "ui_width": 4,
-        "name": "pin_26",
+        "name": "pin_6",
         "type": "integer",
         "default": 6
     }]
