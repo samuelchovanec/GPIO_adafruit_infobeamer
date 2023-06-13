@@ -18,7 +18,7 @@ for pin, state in device.gpio.poll_forever():
         print("pin touched")
         device.gpio.setup_pin(21, direction="out")
         time.sleep(1)
-        device.gpio.set_pin_value(21,  high=True)
+        device.gpio.set_pin_value(20,  high=True)
 
 device.gpio.monitor(config.pin_13)
 for pin, state in device.gpio.poll_forever():
@@ -27,7 +27,7 @@ for pin, state in device.gpio.poll_forever():
         print("pin touched")
         device.gpio.setup_pin(21, direction="out")
         time.sleep(1)
-        device.gpio.set_pin_value(21,  high=True)
+        device.gpio.set_pin_value(16,  high=True)
 
 device.gpio.monitor(config.pin_6)
 for pin, state in device.gpio.poll_forever():
@@ -36,4 +36,4 @@ for pin, state in device.gpio.poll_forever():
         print("pin touched")
         device.gpio.setup_pin(21, direction="out")
         time.sleep(1)
-        device.gpio.set_pin_value(21,  high=True)
+        device.gpio.set_pin_value(12,  high=True)
