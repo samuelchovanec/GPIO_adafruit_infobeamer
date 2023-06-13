@@ -10,9 +10,16 @@ device.gpio.monitor(config.pin_6)
 
 
 for pin, state in device.gpio.poll_forever():
-    print(state)
-    print(pin)
-
+    if (state == 1 and pin == 26):
+        print("pin 26 touched")
+        device.gpio.setup_pin(21, direction="out")
+        time.sleep(1)
+        device.gpio.set_pin_value(21,  high=True)
+    elif (state == 1 and pin == 19):
+        print("pin 19 touched")
+        device.gpio.setup_pin(20, direction="out")
+        time.sleep(1)
+        device.gpio.set_pin_value(20,  high=True)
         
 
     
