@@ -18,7 +18,7 @@
     },{
         "title": "MONITOR PIN 3",
         "ui_width": 4,
-        "name": "pin_4",
+        "name": "pin_13",
         "type": "integer",
         "default": 13
     },{
