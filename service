@@ -8,8 +8,10 @@ device.gpio.monitor(config.pin_17)
 device.gpio.monitor(config.pin_18)
 device.gpio.monitor(config.pin_19)
 
+16_is_on = False
 
 def handle_pin_16():
+    16_is_on = True
     print("pin 16 touched")
     device.gpio.setup_pin(20, direction="out")
     time.sleep(20)
@@ -35,7 +37,7 @@ def handle_pin_19():
 
 for pin, state in device.gpio.poll_forever():
     if state == 1:
-        if pin == 16:
+        if pin == 16 and 16_is_on == False:
             threading.Thread(target=handle_pin_16).start()
         elif pin == 19:
             threading.Thread(target=handle_pin_19).start()
