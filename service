@@ -8,7 +8,7 @@ device.gpio.monitor(config.pin_17)
 device.gpio.monitor(config.pin_18)
 device.gpio.monitor(config.pin_19)
 
-
+sixteen_is_on = False
 
 def handle_pin_16():
     sixteen_is_on = True
