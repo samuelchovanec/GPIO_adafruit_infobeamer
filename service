@@ -30,7 +30,7 @@ def handle_pin_18():
 def handle_pin_19():
     print("pin 19 touched")
     device.gpio.setup_pin(23, direction="out")
-    time.sleep(1)
+    time.sleep(20)
     device.gpio.set_pin_value(23, high=True)
 
 for pin, state in device.gpio.poll_forever():
@@ -39,5 +39,9 @@ for pin, state in device.gpio.poll_forever():
             threading.Thread(target=handle_pin_16).start()
         elif pin == 19:
             threading.Thread(target=handle_pin_19).start()
+        elif pin == 17:
+            threading.Thread(target=handle_pin_17).start()
+        elif pin == 18:
+            threading.Thread(target=handle_pin_18).start()
 
     
