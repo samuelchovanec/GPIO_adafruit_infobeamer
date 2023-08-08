@@ -1,25 +1,31 @@
 #!/usr/bin/python2.7
-from hosted import device, node, config, time
+from hosted import device, node, config, time, threading
 config.restart_on_update()
 
 
-device.gpio.monitor(config.pin_26)
+device.gpio.monitor(config.pin_16)
+device.gpio.monitor(config.pin_17)
+device.gpio.monitor(config.pin_18)
 device.gpio.monitor(config.pin_19)
-device.gpio.monitor(config.pin_13)
-device.gpio.monitor(config.pin_6)
 
+
+def handle_pin_16():
+    print("pin 16 touched")
+    device.gpio.setup_pin(21, direction="out")
+    time.sleep(20)
+    device.gpio.set_pin_value(21, high=True)
+
+def handle_pin_19():
+    print("pin 19 touched")
+    device.gpio.setup_pin(20, direction="out")
+    time.sleep(1)
+    device.gpio.set_pin_value(20, high=True)
 
 for pin, state in device.gpio.poll_forever():
-    if (state == 1 and pin == 26):
-        print("pin 26 touched")
-        device.gpio.setup_pin(21, direction="out")
-        time.sleep(1)
-        device.gpio.set_pin_value(21,  high=True)
-    elif (state == 1 and pin == 19):
-        print("pin 19 touched")
-        device.gpio.setup_pin(20, direction="out")
-        time.sleep(1)
-        device.gpio.set_pin_value(20,  high=True)
-        
+    if state == 1:
+        if pin == 16:
+            threading.Thread(target=handle_pin_16).start()
+        elif pin == 19:
+            threading.Thread(target=handle_pin_19).start()
 
     
