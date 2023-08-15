@@ -9,42 +9,50 @@ device.gpio.monitor(config.pin_18)
 device.gpio.monitor(config.pin_19)
 
 sixteen_is_on = False
+seventeen_is_on = False
+eighteen_is_on = False
+nineteen_is_on = False
 
-def handle_pin_16():
-    sixteen_is_on = True
-    print("pin 16 touched")
-    device.gpio.setup_pin(20, direction="out")
-    time.sleep(20)
-    device.gpio.set_pin_value(20, high=True)
-    sixteen_is_on = False
+while True:
+    def handle_pin_16():
+        sixteen_is_on = True
+        print("pin 16 touched")
+        device.gpio.setup_pin(20, direction="out")
+        time.sleep(20)
+        device.gpio.set_pin_value(20, high=True)
+        sixteen_is_on = False
 
-def handle_pin_17():
-    print("pin 17 touched")
-    device.gpio.setup_pin(21, direction="out")
-    time.sleep(20)
-    device.gpio.set_pin_value(21, high=True)
+    def handle_pin_17():
+        seventeen_is_on = True
+        print("pin 17 touched")
+        device.gpio.setup_pin(21, direction="out")
+        time.sleep(20)
+        device.gpio.set_pin_value(21, high=True)
+        seventeen_is_on = False
 
-def handle_pin_18():
-    print("pin 18 touched")
-    device.gpio.setup_pin(22, direction="out")
-    time.sleep(20)
-    device.gpio.set_pin_value(22, high=True)
+    def handle_pin_18():
+        eighteen_is_on = True
+        print("pin 18 touched")
+        device.gpio.setup_pin(22, direction="out")
+        time.sleep(20)
+        device.gpio.set_pin_value(22, high=True)
+        eighteen_is_on = False
 
-def handle_pin_19():
-    print("pin 19 touched")
-    device.gpio.setup_pin(23, direction="out")
-    time.sleep(20)
-    device.gpio.set_pin_value(23, high=True)
+    def handle_pin_19():
+        nineteen_is_on = True
+        print("pin 19 touched")
+        device.gpio.setup_pin(23, direction="out")
+        time.sleep(20)
+        device.gpio.set_pin_value(23, high=True)
+        nineteen_is_on = False
 
-for pin, state in device.gpio.poll_forever():
-    if state == 1:
-        if pin == 16 and sixteen_is_on == False:
-            threading.Thread(target=handle_pin_16).start()
-        elif pin == 19:
-            threading.Thread(target=handle_pin_19).start()
-        elif pin == 17:
-            threading.Thread(target=handle_pin_17).start()
-        elif pin == 18:
-            threading.Thread(target=handle_pin_18).start()
-
-    
+    for pin, state in device.gpio.poll_forever():
+        if state == 1:
+            if pin == 16 and sixteen_is_on == False:
+                threading.Thread(target=handle_pin_16).start()
+            elif pin == 19 and nineteen_is_on == False:
+                threading.Thread(target=handle_pin_19).start()
+            elif pin == 17 and seventeen_is_on == False:
+                threading.Thread(target=handle_pin_17).start()
+            elif pin == 18 and eighteen_is_on == False:
+                threading.Thread(target=handle_pin_18).start()
