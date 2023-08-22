@@ -36,12 +36,12 @@ def handle_pin_17():
 def handle_pin_18():
     global eighteen_is_on
     if not eighteen_is_on:
-        eight_teen_is_on = True
+        eighteen_is_on = True
         print("pin 18 touched")
         device.gpio.setup_pin(22, direction="out")
         time.sleep(20)
         device.gpio.set_pin_value(22, high=True)
-        eightteen_is_on = False
+        eighteen_is_on = False
 
 def handle_pin_19():
     global nineteen_is_on
@@ -51,7 +51,7 @@ def handle_pin_19():
         device.gpio.setup_pin(23, direction="out")
         time.sleep(20)
         device.gpio.set_pin_value(23, high=True)
-        nine_teen_is_on = False
+        nineteen_is_on = False
 
 for pin, state in device.gpio.poll_forever():
     if state == 1:
