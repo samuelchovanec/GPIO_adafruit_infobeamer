@@ -1,9 +1,8 @@
 #!/usr/bin/python2.7
-from hosted import device, node, config, time, threading, os, RPi.GPIO as GPIO
-# code by talofer99@hotmail.com
-# temp control with cooling fan.
-# connect a fan via a npn transistor.
-# power from the 5V of the rpi.
+from hosted import device, node, config, time, threading, 
+import os
+import RPi.GPIO as GPIO
+
 
 fanPin = 26
 GPIO.setmode(GPIO.BCM)
