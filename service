@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-from hosted import device, node, config, time, threading, 
+from hosted import device, node, config, time, threading
 import os
 import RPi.GPIO as GPIO
 
