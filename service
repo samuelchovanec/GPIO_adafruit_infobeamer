@@ -13,21 +13,20 @@ sixteen_is_on = False
 seventeen_is_on = False
 eighteen_is_on = False
 nineteen_is_on = False
-fan_is_on = False
+
 
 def handle_pin_16():
-    global sixteen_is_on, fan_is_on
-    if not sixteen_is_on and fan_is_on:
+    global sixteen_is_on
+    if not sixteen_is_on:
         sixteen_is_on = True
-        fan_is_on = True
         print("pin 16 touched")
         device.gpio.setup_pin(20, direction="out")
-        device.gpio.setup_pin(26, direction="out")
+        device.gpio.setup_pin(26, direction="in")
         time.sleep(20)
         device.gpio.set_pin_value(20, high=True)
         device.gpio.set_pin_value(26, high=True)
         sixteen_is_on = False
-        fan_is_on = False
+        
 
 def handle_pin_17():
     global seventeen_is_on
