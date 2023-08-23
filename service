@@ -24,7 +24,7 @@ def handle_pin_16():
         device.gpio.setup_pin(26, direction="out")
         time.sleep(20)
         device.gpio.set_pin_value(20, high=True)
-        device.gpio.set_pin_value(26, high=False)
+        device.gpio.set_pin_value(26, low=True)
         sixteen_is_on = False
         
 
