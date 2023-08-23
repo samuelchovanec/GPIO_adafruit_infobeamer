@@ -7,7 +7,7 @@ device.gpio.monitor(config.pin_16)
 device.gpio.monitor(config.pin_17)
 device.gpio.monitor(config.pin_18)
 device.gpio.monitor(config.pin_19)
-device.gpio.monitor(config.pin_20)
+
 
 sixteen_is_on = False
 seventeen_is_on = False
@@ -17,25 +17,30 @@ nineteen_is_on = False
 fan_is_on = False
 
 
-def handle_pin_20():
-    global fan_is_on
-    if not fan_is_on:
-        fan_is_on = True
-        print("pin 20 touched")
-        device.gpio.setup_pin(26, direction="out")
-        time.sleep(20)
-        device.gpio.set_pin_value(26, high=True)
-        fan_is_on = False
-
 def handle_pin_16():
-    global sixteen_is_on
+    global sixteen_is_on, fan_is_on
     if not sixteen_is_on:
         sixteen_is_on = True
         print("pin 16 touched")
         device.gpio.setup_pin(20, direction="out")
-        time.sleep(20)
+        device.gpio.setup_pin(26, direction="out")
+
         device.gpio.set_pin_value(20, high=True)
+        device.gpio.set_pin_value(26, high=True)
+        
+        fan_is_on = True
+        print("fan ON")
+        
+        threading.Timer(20, turn_off_fan).start()
+
         sixteen_is_on = False
+
+def turn_off_fan():
+    global fan_is_on
+    device.gpio.set_pin_value(20, low=True)
+    device.gpio.set_pin_value(26, low=True)
+    fan_is_on = False
+    print("fan OFF")
     
 
 def handle_pin_17():
