@@ -29,14 +29,11 @@ def handle_pin_16():
             print("fan ON")
             device.gpio.set_pin_value(26, high=True)
         
-        time.sleep(20)
-
-        device.gpio.set_pin_value(20, high=True)
-        sixteen_is_on = False
-
-        if fan_is_on:
+            time.sleep(20)
+            sixteen_is_on = False
             fan_is_on = False
-            device.gpio.set_pin_value(26, low=True)
+
+    
 
 def handle_pin_17():
     global seventeen_is_on
