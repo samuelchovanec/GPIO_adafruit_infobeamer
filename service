@@ -21,10 +21,10 @@ def handle_pin_16():
         sixteen_is_on = True
         print("pin 16 touched")
         device.gpio.setup_pin(20, direction="out")
-        device.gpio.set_pin_value(26, high=True)
+        #device.gpio.set_pin_value(26, high=True)
         time.sleep(20)
         device.gpio.set_pin_value(20, high=True)
-        device.gpio.setup_pin(26, direction="out")
+        #device.gpio.setup_pin(26, direction="out")
         sixteen_is_on = False
         
 
