@@ -34,8 +34,10 @@ def handle_pin_17():
         seventeen_is_on = True
         print("pin 17 touched")
         device.gpio.setup_pin(21, direction="out")
+        device.gpio.set_pin_value(26, high=True) # fan ON
         time.sleep(20)
         device.gpio.set_pin_value(21, high=True)
+        device.gpio.setup_pin(26, direction="out") # fan OFF
         seventeen_is_on = False
 
 def handle_pin_18():
