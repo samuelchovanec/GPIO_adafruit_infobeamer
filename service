@@ -23,9 +23,6 @@ def handle_pin_16():
         device.gpio.setup_pin(20, direction="out")
         device.gpio.setup_pin(26, direction="out")
         device.gpio.set_pin_value(26, high=True)
-        for pin_16, state in device.gpio.poll_forever():
-            node.send('/state:%d' % state)
-            print("crpalka")
         time.sleep(20)
         device.gpio.set_pin_value(20, high=True)
         device.gpio.set_pin_value(26, high=True)
