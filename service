@@ -78,10 +78,10 @@ def handle_pin_17():
 
 def handle_pin_18():
     for x in range(total_steps):
-            device.gpio.set_pin_value(STEP, 1)
-            sleep(delay)
-            device.gpio.set_pin_value(STEP, 0)
-            sleep(delay)
+        device.gpio.set_pin_value(STEP, 1)
+        sleep(delay)
+        device.gpio.set_pin_value(STEP, 0)
+        sleep(delay)
     
         if x < total_steps // 3:  
             delay = max(minimum_delay, delay - delay_change_per_step)
