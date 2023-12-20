@@ -93,7 +93,7 @@ def handle_pin_18():
             if x < total_steps // 3:
                 delay = max(minimum_delay, delay - delay_change_per_step)
             elif x > 2 * total_steps // 3:
-                delay = min(initial_delay, delay + delay_change_per_step)
+                delay = min(minimum_delay, delay + delay_change_per_step)
         device.gpio.set_pin_value(22, high=True)
         eighteen_is_on = False
 
