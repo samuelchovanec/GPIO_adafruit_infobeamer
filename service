@@ -39,11 +39,11 @@ total_duration = 15  # Total duration of the sequence in seconds
 phase_duration_acc_dec = 2  # Duration of each phase (acceleration and deceleration) in seconds
 phase_duration_constant = 11  # Duration of constant speed phase in seconds
 
-# Adjusted delays for slower rotation
-initial_delay = 0.02  # Slower initial delay
-minimum_delay = 0.01  # Slower minimum delay
+initial_delay = 0.02 / 5  # Five times faster initial delay
+minimum_delay = 0.01 / 5  # Five times faster minimum delay
 # Calculate the rate of change for delay
 delay_change_per_step = (initial_delay - minimum_delay) / (phase_duration_acc_dec / initial_delay)
+
 
 # Initialize delay
 delay = initial_delay
