@@ -37,19 +37,19 @@ for pin, value in zip(MODE, RESOLUTION['Full']):
 
 # Timing settings
 total_duration = 15  # Total duration of the sequence in seconds
-phase_duration = 5  # Duration of each phase (acceleration, constant speed, deceleration) in seconds
+phase_duration_acc_dec = 2  # Duration of each phase (acceleration and deceleration) in seconds
+phase_duration_constant = 11  # Duration of constant speed phase in seconds
 
-# Initial delay (start faster)
-initial_delay = 0.01 / 3  # Three times faster than the previous initial delay
-# Minimum delay (maximum speed, reduced to make it three times faster)
-minimum_delay = 0.002 / 3  # Three times faster than the previous minimum delay
+# Adjusted delays for slower rotation
+initial_delay = 0.02  # Slower initial delay
+minimum_delay = 0.01  # Slower minimum delay
 # Calculate the rate of change for delay
-delay_change_per_step = (initial_delay - minimum_delay) / (phase_duration / initial_delay)
+delay_change_per_step = (initial_delay - minimum_delay) / (phase_duration_acc_dec / initial_delay)
 
 # Initialize delay
 delay = initial_delay
 # Calculate total steps based on the average of initial and minimum delays
-total_steps = int(total_duration / ((initial_delay + minimum_delay) / 2))
+total_steps = int(total_duration / ((initial_delay + minimum_delay) /
 
 
 def handle_pin_16():
@@ -77,6 +77,7 @@ def handle_pin_17():
         device.gpio.set_pin_value(21, high=True)
         seventeen_is_on = False
 
+
 def handle_pin_18():
     global eighteen_is_on, delay  
     if not eighteen_is_on:
@@ -90,12 +91,14 @@ def handle_pin_18():
             device.gpio.set_pin_value(STEP, 0)
             sleep(delay)
     
-            if x < total_steps // 3:
+            # Adjust delay for acceleration and deceleration phases
+            if x < (total_steps * phase_duration_acc_dec) // total_duration:
                 delay = max(minimum_delay, delay - delay_change_per_step)
-            elif x > 2 * total_steps // 3:
+            elif x > total_steps - (total_steps * phase_duration_acc_dec) // total_duration:
                 delay = min(initial_delay, delay + delay_change_per_step)
         device.gpio.set_pin_value(22, high=True)
         eighteen_is_on = False
+
 
 def handle_pin_19():
     global nineteen_is_on
