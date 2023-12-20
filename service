@@ -35,7 +35,6 @@ RESOLUTION = {'Full': (0, 0, 0)}
 for pin, value in zip(MODE, RESOLUTION['Full']):
     device.gpio.set_pin_value(pin, value)
 
-# Timing settings
 total_duration = 15  # Total duration of the sequence in seconds
 phase_duration_acc_dec = 2  # Duration of each phase (acceleration and deceleration) in seconds
 phase_duration_constant = 11  # Duration of constant speed phase in seconds
@@ -49,7 +48,8 @@ delay_change_per_step = (initial_delay - minimum_delay) / (phase_duration_acc_de
 # Initialize delay
 delay = initial_delay
 # Calculate total steps based on the average of initial and minimum delays
-total_steps = int(total_duration / ((initial_delay + minimum_delay) /
+total_steps = int(total_duration / ((initial_delay + minimum_delay) / 2))
+
 
 
 def handle_pin_16():
