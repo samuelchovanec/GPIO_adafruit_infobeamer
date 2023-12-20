@@ -77,12 +77,7 @@ def handle_pin_17():
         seventeen_is_on = False
 
 def handle_pin_18():
-    global eighteen_is_on
-    if not eighteen_is_on:
-        eighteen_is_on = True
-        print("pin 18 touched")
-        device.gpio.setup_pin(22, direction="out")
-        for x in range(total_steps):
+    for x in range(total_steps):
             device.gpio.set_pin_value(STEP, 1)
             sleep(delay)
             device.gpio.set_pin_value(STEP, 0)
@@ -92,6 +87,11 @@ def handle_pin_18():
             delay = max(minimum_delay, delay - delay_change_per_step)
         elif x > 2 * total_steps // 3:  # Deceleration
             delay = min(initial_delay, delay + delay_change_per_step)
+    global eighteen_is_on
+    if not eighteen_is_on:
+        eighteen_is_on = True
+        print("pin 18 touched")
+        device.gpio.setup_pin(22, direction="out")
         time.sleep(20)
         device.gpio.set_pin_value(22, high=True)
         eighteen_is_on = False
