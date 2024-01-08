@@ -36,7 +36,7 @@ for pin, value in zip(MODE, RESOLUTION['Full']):
     device.gpio.set_pin_value(pin, value)
 
 total_duration = 19.5  # Total duration of the sequence in seconds
-phase_duration_acc_dec = 0  # Duration of each phase (acceleration and deceleration) in seconds
+phase_duration_acc_dec = 1  # Duration of each phase (acceleration and deceleration) in seconds
 phase_duration_constant = 19.5  # Duration of constant speed phase in seconds
 
 initial_delay = 0.02 / 5  # Five times faster initial delay
