@@ -35,7 +35,7 @@ RESOLUTION = {'Full': (0, 0, 0)}
 for pin, value in zip(MODE, RESOLUTION['Full']):
     device.gpio.set_pin_value(pin, value)
 
-total_duration = 19.5  # Total duration of the sequence in seconds
+total_duration = 30  # Total duration of the sequence in seconds
 phase_duration_acc_dec = 2  # Duration of each phase (acceleration and deceleration) in seconds
 phase_duration_constant = 11  # Duration of constant speed phase in seconds
 
@@ -73,7 +73,7 @@ def handle_pin_17():
         seventeen_is_on = True
         print("pin 17 touched")
         device.gpio.setup_pin(21, direction="out")
-        time.sleep(20)
+        time.sleep(35)
         device.gpio.set_pin_value(21, high=True)
         seventeen_is_on = False
 
@@ -106,7 +106,7 @@ def handle_pin_19():
         nineteen_is_on = True
         print("pin 19 touched")
         device.gpio.setup_pin(23, direction="out")
-        time.sleep(20)
+        time.sleep(35)
         device.gpio.set_pin_value(23, high=True)
         nineteen_is_on = False
 
